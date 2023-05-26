@@ -1,3 +1,5 @@
+import colors from 'tailwindcss/colors';
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -9,7 +11,11 @@ module.exports = {
     container: {
       center: true
     },
-    extend: {}
+    extend: {
+      colors: {
+        brand: colors.red[500]
+      }
+    }
   },
   plugins: []
 };
