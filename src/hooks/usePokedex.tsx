@@ -1,12 +1,20 @@
 'use client';
 
 import { fetcher } from '@/api';
-import { Pokedex } from '@/api/types';
-import { useState } from 'react';
+import { Pokedex, PokemonEntry } from '@/api/types';
 import useSWR from 'swr';
 
-export default function usePokedex(dex: number = 1) {
-  const [page, setPage] = useState(1);
+export type PokedexData = {
+  data: PokemonEntry[] | undefined;
+  isLoading: boolean;
+  isError: Error | undefined;
+  totalPages: number;
+};
+
+export default function usePokedex(
+  dex: number = 1,
+  page: number = 1
+): PokedexData {
   const { data, error, isLoading } = useSWR<Pokedex, Error>(
     `pokedex/${dex}`,
     fetcher<Pokedex>
@@ -18,24 +26,10 @@ export default function usePokedex(dex: number = 1) {
 
   const totalPages = !data ? 0 : Math.ceil(data.pokemon_entries.length / 20);
 
-  const incrementPage = () => {
-    if (page < totalPages) {
-      setPage(page + 1);
-    }
-  };
-  const decrementPage = () => {
-    if (page > 1) {
-      setPage(page - 1);
-    }
-  };
-
   return {
     data: slicedData,
     isLoading,
     isError: error,
-    totalPages,
-    currentPage: page,
-    incrementPage,
-    decrementPage
+    totalPages
   };
 }
