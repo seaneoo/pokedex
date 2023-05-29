@@ -18,4 +18,8 @@
   .text-gradient {
     @apply bg-gradient-to-r bg-clip-text text-transparent;
   }
+
+  .text-gradient-brand {
+    @apply bg-gradient-to-r from-red-400 to-red-500 bg-clip-text text-transparent;
+  }
 }
