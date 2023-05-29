@@ -30,7 +30,9 @@ function Nav() {
 
   return (
     <nav className="container flex flex-wrap items-center justify-between gap-4 p-4">
-      <Link href="/" className="text-4xl font-bold text-inherit">
+      <Link
+        href="/"
+        className="text-gradient from-red-400 to-red-500 text-4xl font-bold">
         Pokédex
       </Link>
       <button
