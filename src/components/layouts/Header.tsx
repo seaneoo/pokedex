@@ -3,7 +3,7 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 import { useState } from 'react';
-import ExternalLink from './ExternalLink';
+import ExternalLink from '../ExternalLink';
 
 function MenuIcon() {
   return (
