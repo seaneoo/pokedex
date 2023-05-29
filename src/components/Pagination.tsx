@@ -27,6 +27,12 @@ export default function Pagination({
     return currentPage;
   };
 
+  const goTo = (page: 'first' | 'last') => {
+    if (page === 'first') return (currentPage = minPage);
+    else if (page === 'last') return (currentPage = maxPage);
+    return (currentPage = 1);
+  };
+
   return (
     <div className="inline-flex flex-col gap-2">
       {showPageCount && (
@@ -34,7 +40,25 @@ export default function Pagination({
           {currentPage} of {maxPage}
         </p>
       )}
-      <div className="inline-flex items-center justify-center gap-4">
+      <div className="inline-flex items-center justify-center gap-2">
+        <button
+          className="button"
+          disabled={currentPage <= minPage}
+          onClick={() => handleChange(goTo('first'))}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="h-6 w-6">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5"
+            />
+          </svg>
+        </button>
         <button
           className="button"
           disabled={currentPage <= minPage}
@@ -49,7 +73,7 @@ export default function Pagination({
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
             />
           </svg>
         </button>
@@ -67,7 +91,25 @@ export default function Pagination({
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
+          </svg>
+        </button>
+        <button
+          className="button"
+          disabled={currentPage >= maxPage}
+          onClick={() => handleChange(goTo('last'))}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="h-6 w-6">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"
             />
           </svg>
         </button>
