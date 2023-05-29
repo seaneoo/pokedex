@@ -4,6 +4,7 @@ import usePokemon from '@/hooks/usePokemon';
 import { getResourceName } from '@/util';
 import classNames from 'classnames';
 import Image, { ImageLoaderProps } from 'next/image';
+import Link from 'next/link';
 import Types from '../pokemon/Types';
 
 function Wrapper({
@@ -48,19 +49,21 @@ export default function DexGridItem({ pokemonName }: { pokemonName: string }) {
   };
 
   return (
-    <Wrapper>
-      <Image
-        className="mb-2 h-auto w-[300px] md:w-full"
-        src={`${pokemon.id}.png`}
-        loader={imageLoader}
-        width={512}
-        height={512}
-        alt={name}
-        title={name}
-      />
-      <p className="text-sm font-bold">#{id}</p>
-      <p>{name}</p>
-      <Types types={pokemon.types} />
-    </Wrapper>
+    <Link href={`/pokemon/${species.id}`}>
+      <Wrapper>
+        <Image
+          className="mb-2 h-auto w-[300px] md:w-full"
+          src={`${pokemon.id}.png`}
+          loader={imageLoader}
+          width={512}
+          height={512}
+          alt={name}
+          title={name}
+        />
+        <p className="text-sm font-bold">#{id}</p>
+        <p>{name}</p>
+        <Types types={pokemon.types} />
+      </Wrapper>
+    </Link>
   );
 }
