@@ -3,7 +3,7 @@ import ExternalLink from './ExternalLink';
 export default function Footer() {
   return (
     <footer className="border-t">
-      <div className="container flex flex-col items-center justify-center p-4">
+      <div className="container flex flex-col items-center justify-center p-4 text-sm text-stone-600">
         <div className="text-center">
           <p>
             &quot;Pokémon&quot; is property of Nintendo Co., Ltd., Creatures
