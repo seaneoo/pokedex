@@ -49,7 +49,7 @@ export default function DexGridItem({ pokemonName }: { pokemonName: string }) {
   };
 
   return (
-    <Link href={`/pokemon/${species.id}`}>
+    <Link href={`/pokemon/${species.id}`} className="text-inherit">
       <Wrapper>
         <Image
           className="mb-2 h-auto w-[300px] md:w-full"
